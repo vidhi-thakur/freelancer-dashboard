@@ -1,25 +1,31 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Separator } from "@/components/ui/separator"
-import { BarChart3, Github } from "lucide-react"
-import Link from "next/link"
-import { useState } from "react"
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Separator } from "@/components/ui/separator";
+import { BarChart3, Github } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
 
 export default function LoginPage() {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     // Handle login logic here
-    console.log("Login attempt:", { email, password })
-  }
+    console.log("Login attempt:", { email, password });
+  };
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -35,7 +41,6 @@ export default function LoginPage() {
             </Link>
 
             <div className="flex items-center gap-4">
-              <span className="text-sm text-muted-foreground">Don't have an account?</span>
               <Link href="/signup">
                 <Button variant="outline">Sign Up</Button>
               </Link>
@@ -49,7 +54,9 @@ export default function LoginPage() {
         <Card className="w-full max-w-md">
           <CardHeader className="text-center">
             <CardTitle className="text-2xl">Welcome back</CardTitle>
-            <CardDescription>Sign in to your FreelanceHub account</CardDescription>
+            <CardDescription>
+              Log In to your FreelanceHub account
+            </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -68,7 +75,10 @@ export default function LoginPage() {
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
                   <Label htmlFor="password">Password</Label>
-                  <Link href="#" className="text-sm text-primary hover:underline">
+                  <Link
+                    href="#"
+                    className="text-sm text-primary hover:underline"
+                  >
                     Forgot password?
                   </Link>
                 </div>
@@ -83,7 +93,7 @@ export default function LoginPage() {
               </div>
 
               <Button type="submit" className="w-full">
-                Sign In
+                Log In
               </Button>
             </form>
 
@@ -92,7 +102,9 @@ export default function LoginPage() {
                 <Separator className="w-full" />
               </div>
               <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-background px-2 text-muted-foreground">Or continue with</span>
+                <span className="bg-background px-2 text-muted-foreground">
+                  Or continue with
+                </span>
               </div>
             </div>
 
@@ -134,5 +146,5 @@ export default function LoginPage() {
         </Card>
       </div>
     </div>
-  )
+  );
 }

@@ -1,16 +1,22 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Separator } from "@/components/ui/separator"
-import { Checkbox } from "@/components/ui/checkbox"
-import { BarChart3, Github } from "lucide-react"
-import Link from "next/link"
-import { useState } from "react"
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Separator } from "@/components/ui/separator";
+import { Checkbox } from "@/components/ui/checkbox";
+import { BarChart3, Github } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
 
 export default function SignupPage() {
   const [formData, setFormData] = useState({
@@ -20,17 +26,17 @@ export default function SignupPage() {
     password: "",
     confirmPassword: "",
     agreeToTerms: false,
-  })
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     // Handle signup logic here
-    console.log("Signup attempt:", formData)
-  }
+    console.log("Signup attempt:", formData);
+  };
 
   const handleInputChange = (field: string, value: string | boolean) => {
-    setFormData((prev) => ({ ...prev, [field]: value }))
-  }
+    setFormData((prev) => ({ ...prev, [field]: value }));
+  };
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -46,9 +52,8 @@ export default function SignupPage() {
             </Link>
 
             <div className="flex items-center gap-4">
-              <span className="text-sm text-muted-foreground">Already have an account?</span>
               <Link href="/login">
-                <Button variant="outline">Sign In</Button>
+                <Button variant="outline">Log In</Button>
               </Link>
             </div>
           </div>
@@ -60,7 +65,9 @@ export default function SignupPage() {
         <Card className="w-full max-w-md">
           <CardHeader className="text-center">
             <CardTitle className="text-2xl">Create your account</CardTitle>
-            <CardDescription>Start your 14-day free trial today</CardDescription>
+            <CardDescription>
+              Start your 14-day free trial today
+            </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -71,7 +78,9 @@ export default function SignupPage() {
                     id="firstName"
                     placeholder="John"
                     value={formData.firstName}
-                    onChange={(e) => handleInputChange("firstName", e.target.value)}
+                    onChange={(e) =>
+                      handleInputChange("firstName", e.target.value)
+                    }
                     required
                   />
                 </div>
@@ -81,7 +90,9 @@ export default function SignupPage() {
                     id="lastName"
                     placeholder="Doe"
                     value={formData.lastName}
-                    onChange={(e) => handleInputChange("lastName", e.target.value)}
+                    onChange={(e) =>
+                      handleInputChange("lastName", e.target.value)
+                    }
                     required
                   />
                 </div>
@@ -106,7 +117,9 @@ export default function SignupPage() {
                   type="password"
                   placeholder="Create a strong password"
                   value={formData.password}
-                  onChange={(e) => handleInputChange("password", e.target.value)}
+                  onChange={(e) =>
+                    handleInputChange("password", e.target.value)
+                  }
                   required
                 />
               </div>
@@ -118,7 +131,9 @@ export default function SignupPage() {
                   type="password"
                   placeholder="Confirm your password"
                   value={formData.confirmPassword}
-                  onChange={(e) => handleInputChange("confirmPassword", e.target.value)}
+                  onChange={(e) =>
+                    handleInputChange("confirmPassword", e.target.value)
+                  }
                   required
                 />
               </div>
@@ -127,7 +142,9 @@ export default function SignupPage() {
                 <Checkbox
                   id="terms"
                   checked={formData.agreeToTerms}
-                  onCheckedChange={(checked) => handleInputChange("agreeToTerms", checked as boolean)}
+                  onCheckedChange={(checked) =>
+                    handleInputChange("agreeToTerms", checked as boolean)
+                  }
                 />
                 <Label htmlFor="terms" className="text-sm">
                   I agree to the{" "}
@@ -141,7 +158,11 @@ export default function SignupPage() {
                 </Label>
               </div>
 
-              <Button type="submit" className="w-full" disabled={!formData.agreeToTerms}>
+              <Button
+                type="submit"
+                className="w-full"
+                disabled={!formData.agreeToTerms}
+              >
                 Create Account
               </Button>
             </form>
@@ -151,7 +172,9 @@ export default function SignupPage() {
                 <Separator className="w-full" />
               </div>
               <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-background px-2 text-muted-foreground">Or continue with</span>
+                <span className="bg-background px-2 text-muted-foreground">
+                  Or continue with
+                </span>
               </div>
             </div>
 
@@ -186,12 +209,12 @@ export default function SignupPage() {
             <p className="text-center text-sm text-muted-foreground">
               Already have an account?{" "}
               <Link href="/login" className="text-primary hover:underline">
-                Sign in
+                Log In
               </Link>
             </p>
           </CardContent>
         </Card>
       </div>
     </div>
-  )
+  );
 }

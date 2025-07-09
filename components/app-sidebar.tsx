@@ -1,5 +1,15 @@
-"use client"
-import { BarChart3, FileText, FolderKanban, Settings, Users, Wand2, Home, Plus } from "lucide-react"
+"use client";
+import {
+  BarChart3,
+  FileText,
+  FolderKanban,
+  Settings,
+  Users,
+  Wand2,
+  Home,
+  Plus,
+  LogOut,
+} from "lucide-react";
 
 import {
   Sidebar,
@@ -13,10 +23,11 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarRail,
-} from "@/components/ui/sidebar"
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
+} from "@/components/ui/sidebar";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
+import Cookies from "js-cookie";
 
 const menuItems = [
   {
@@ -49,10 +60,23 @@ const menuItems = [
     url: "/settings",
     icon: Settings,
   },
-]
+];
 
 export function AppSidebar() {
-  const pathname = usePathname()
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const handleLogout = (): void => {
+    const allCookies = Cookies.get();
+
+    // Remove each cookie
+    Object.keys(allCookies).forEach((cookieName) => {
+      Cookies.remove(cookieName);
+    });
+
+    console.log("All cookies cleared.");
+    router.push("/welcome");
+  };
 
   return (
     <Sidebar>
@@ -93,8 +117,19 @@ export function AppSidebar() {
             Quick Invoice
           </Button>
         </div>
+        <div className="px-2 pb-2 pt-0">
+          <Button
+            onClick={handleLogout}
+            className="w-full"
+            variant="outline"
+            size="sm"
+          >
+            <LogOut className="h-4 w-4 mr-2" />
+            Log out
+          </Button>
+        </div>
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
-  )
+  );
 }

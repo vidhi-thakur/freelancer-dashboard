@@ -22,9 +22,11 @@ import { redirect } from "next/navigation";
 export default function LoginPage() {
   const { hasToken } = useAuthToken();
 
-  if (hasToken === null) return null; // add loader later
+  if (hasToken === null) return null; // toKEN lOading
 
-  if (hasToken) redirect("/");
+  if (hasToken) {
+    return redirect("/");
+  }
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 

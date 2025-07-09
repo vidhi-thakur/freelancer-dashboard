@@ -3,12 +3,12 @@
 import { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 
-export function useAuthToken(): { token: string; hasToken: boolean } {
-    const [token, setToken] = useState<string>("");
-    const [hasToken, setHasToken] = useState<boolean>(false);
+export function useAuthToken(): { token: string | null; hasToken: boolean | null } {
+    const [token, setToken] = useState<string | null>(null);
+    const [hasToken, setHasToken] = useState<boolean | null>(null);
 
     useEffect(() => {
-        const tokenValue = Cookies.get('token') || "";
+        const tokenValue = Cookies.get('token') || null;
         setToken(tokenValue);
         setHasToken(!!tokenValue);
     }, []);

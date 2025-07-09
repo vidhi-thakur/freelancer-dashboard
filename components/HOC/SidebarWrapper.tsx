@@ -16,16 +16,16 @@ export default function SidebarWrapper({
   children: React.ReactNode;
 }) {
   const { hasToken } = useAuthToken();
-  useEffect(() => {
-    if (!hasToken) {
-      return redirect("/welcome");
-    }
-  }, []);
-  if (!hasToken) return null; // Add loader later
-  return (
-    <SidebarProvider>
-      <AppSidebar />
-      {children}
-    </SidebarProvider>
-  );
+
+  if (hasToken === null) {
+    // TOKEN LOADING
+    return null;
+  } else if (!hasToken) return redirect("/welcome");
+  else
+    return (
+      <SidebarProvider>
+        <AppSidebar />
+        {children}
+      </SidebarProvider>
+    );
 }

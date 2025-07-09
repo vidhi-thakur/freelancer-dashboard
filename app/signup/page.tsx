@@ -20,12 +20,6 @@ import { useState } from "react";
 import { useAuthToken } from "@/hooks/useAuthToken";
 
 export default function SignupPage() {
-  const { hasToken } = useAuthToken();
-
-  if (hasToken === null) return null; // add loader later
-
-  if (hasToken) redirect("/");
-
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -34,6 +28,10 @@ export default function SignupPage() {
     confirmPassword: "",
     agreeToTerms: false,
   });
+  const { hasToken } = useAuthToken();
+  if (hasToken === null) return null; // add loader later
+
+  if (hasToken) return redirect("/");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

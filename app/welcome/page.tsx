@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -22,7 +24,6 @@ import {
   Clock,
 } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
 
 export default function WelcomePage() {
   return (

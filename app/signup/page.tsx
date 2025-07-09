@@ -1,7 +1,7 @@
 "use client";
 
 import type React from "react";
-
+import { redirect } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -17,8 +17,15 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { BarChart3, Github } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import { useAuthToken } from "@/hooks/useAuthToken";
 
 export default function SignupPage() {
+  const { hasToken } = useAuthToken();
+
+  if (hasToken === null) return null; // add loader later
+
+  if (hasToken) redirect("/");
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",

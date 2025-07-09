@@ -16,8 +16,15 @@ import { Separator } from "@/components/ui/separator";
 import { BarChart3, Github } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import { useAuthToken } from "@/hooks/useAuthToken";
+import { redirect } from "next/navigation";
 
 export default function LoginPage() {
+  const { hasToken } = useAuthToken();
+
+  if (hasToken === null) return null; // add loader later
+
+  if (hasToken) redirect("/");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
